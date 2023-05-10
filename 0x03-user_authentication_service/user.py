@@ -1,18 +1,25 @@
 #!/usr/bin/env python3
-'''SQLAlchemy model named User for
-   a database table named users
-'''
+"""The `user` model's module.
+"""
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
+
 Base = declarative_base()
 
+<<<<<<< HEAD
 
 class User(Base):
       '''Class User definition
       '''
     __tablename__ = "users"
+=======
+>>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
 
+class User(Base):
+    """Represents a record from the `user` table.
+    """
+    __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     email = Column(String(250), nullable=False)
     hashed_password = Column(String(250), nullable=False)
