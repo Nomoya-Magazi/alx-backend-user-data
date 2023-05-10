@@ -9,37 +9,18 @@ from sqlalchemy.orm.exc import NoResultFound
 from db import DB
 from user import User
 
-<<<<<<< HEAD
-
-class Auth:
-    """Auth class to interact with the authentication database.
-    """
-=======
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
 
 def _hash_password(password: str) -> bytes:
     """Hashes a password.
     """
     return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
-<<<<<<< HEAD
-
-def update_password(self, reset_token: str, password: str) -> None:
-        """Update the password for the user with the given reset token.
-=======
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
 
 def _generate_uuid() -> str:
     """Generates a UUID.
     """
     return str(uuid4())
 
-<<<<<<< HEAD
-
-def get_reset_password_token(self, email: str) -> str:
-        """Get the reset password token for the user with the given email.
-=======
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
 
 class Auth:
     """Auth class to interact with the authentication database.
@@ -48,35 +29,11 @@ class Auth:
     def __init__(self):
         """Initializes a new Auth instance.
         """
-<<<<<<< HEAD
-        user = self._db.find_user_by(email=email)
-        if not user:
-            raise ValueError(f"User {email} does not exist")
-
-        reset_token = _generate_uuid()
-        self._db.update_user(user.id, reset_token=reset_token)
-        return reset_token
-
-
-def destroy_session(self, user_id: int) -> None:
-        """Destroy the session for the user with the given user ID.
-=======
         self._db = DB()
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
 
     def register_user(self, email: str, password: str) -> User:
         """Adds a new user to the database.
         """
-<<<<<<< HEAD
-        self._db.update_user(user_id, session_id=None)
-
-
-def get_user_from_session_id(self, session_id: str) -> User or None:
-        """Get the user corresponding to the given session ID.
-
-        Args:
-            session_id (str): Session ID
-=======
         try:
             self._db.find_user_by(email=email)
         except NoResultFound:
@@ -97,7 +54,6 @@ def get_user_from_session_id(self, session_id: str) -> User or None:
         except NoResultFound:
             return False
         return False
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
 
     def create_session(self, email: str) -> str:
         """Creates a new session for a user.
@@ -109,40 +65,12 @@ def get_user_from_session_id(self, session_id: str) -> User or None:
             return None
         if user is None:
             return None
-<<<<<<< HEAD
-
-
-def create_session(self, email: str) -> str:
-        """Create a session for the user with the given email.
-
-        Args:
-            email (str): User's email
-
-        Returns:
-            str: Session ID
-        """
-        user = self._db.find_user_by(email=email)
-=======
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
         session_id = _generate_uuid()
         self._db.update_user(user.id, session_id=session_id)
         return session_id
 
-<<<<<<< HEAD
-
-def valid_login(self, email: str, password: str) -> bool:
-        """Validate a user login.
-
-        Args:
-            email (str): User's email
-            password (str): User's password
-
-        Returns:
-            bool: True if the login is valid, False otherwise
-=======
     def get_user_from_session_id(self, session_id: str) -> Union[User, None]:
         """Retrieves a user based on a given session ID.
->>>>>>> 2772d296d96af14da297b370fce73deecf87c0a0
         """
         user = None
         if session_id is None:
